@@ -1,0 +1,10 @@
+DROP PROCEDURE IF EXISTS db_merchant.UPDATE_BRAND_PRODUCT;
+CREATE PROCEDURE db_merchant.`UPDATE_BRAND_PRODUCT`(
+        IN   p_bId                 int(3),
+        IN   p_brandName           varchar(255)
+     )
+BEGIN                     
+	  UPDATE db_merchant.BRAND_PRODUCT  b
+    SET b.brand_product_name = p_brandName 
+    WHERE b.brand_product_id = p_bId;
+END;
