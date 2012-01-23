@@ -1,0 +1,8 @@
+DROP PROCEDURE IF EXISTS db_merchant.INSERT_BRAND_PRODUCT;
+CREATE PROCEDURE db_merchant.`INSERT_BRAND_PRODUCT`(
+IN p_brandName varchar(255)
+)
+BEGIN
+				INSERT INTO BRAND_PRODUCT(brand_product_name)
+				VALUES (p_brandName);
+END;
