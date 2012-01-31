@@ -7,5 +7,5 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <link rel="stylesheet" href="<c:url value="/css/petclinic.css"/>" type="text/css"/>
-  <title>Watchdog :: is Watch loggers for help your..</title>	
+  <title>ชื่อร้านค้า หรือระบบของคุณ </title>	
 
