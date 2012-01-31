@@ -7,6 +7,6 @@ public interface MasterBrandProduct {
 	public boolean updateBrandProduct(BrandProduct bProduct) throws Exception;
 	public boolean deleteBrandProduct(int bId) throws Exception;
 	public BrandProduct getBrandProduct(int bId) throws Exception;
-	public ArrayList  listBrandProduct(BrandProduct bProduct) throws Exception;
+	public ArrayList  listBrandProduct() throws Exception;
 
 }
