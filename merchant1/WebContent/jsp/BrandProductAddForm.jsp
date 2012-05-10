@@ -32,7 +32,7 @@ function onSAVE() {
     </tr>
     
     <tr>
-      <th>&nbsp; ชื่อยี่ห้อสินค้า :
+      <th>&nbsp; ชื่อยี่ห้อสินค้า : 
         <br/>
         <form:textarea path="bName" cols="35" rows="3"/> 
 		<font color="#FF0000">&nbsp;*</font>Ex.Yazaki
