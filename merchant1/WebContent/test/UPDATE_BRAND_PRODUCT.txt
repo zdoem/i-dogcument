@@ -1,58 +1,3 @@
----------------------------------------------------------
-DROP PROCEDURE IF EXISTS db_merchant.DELETE_BRAND_PRODUCT;
-CREATE PROCEDURE db_merchant.`DELETE_BRAND_PRODUCT`(
-  IN   p_bId  int(3),
-  OUT  p_IntResult   int(1)
-)
-BEGIN
-    
-    DECLARE _d_pID  varchar(14) DEFAULT null;
-    DECLARE _d_bID  int(3) DEFAULT 0;
-    
-    SELECT  product_id,
-            brand_product_id
-    INTO  _d_pID,
-          _d_bID 
-    FROM   product
-    WHERE  product.brand_product_id = p_bId;
-    
-    IF  _d_bID > 0 THEN
-      SET p_IntResult = 0;
-    ELSE
-      SET p_IntResult = 1;
-      
-      DELETE FROM db_merchant.brand_product 
-      WHERE brand_product_id = p_bId;
-      
-    END IF;
-END;
--------------------------------------------------------------------
-DROP PROCEDURE IF EXISTS db_merchant.GET_BRAND_PRODUCT;
-CREATE PROCEDURE db_merchant.`GET_BRAND_PRODUCT`(
-        IN   p_bID                int(3),
-        OUT  p_bName            varchar(255)
-     )
-BEGIN                     
-	 
-   SELECT 
-          b.brand_product_name
-    INTO  
-          p_bName
-    FROM db_merchant.brand_product b 
-    WHERE b.brand_product_id = p_bID;
-END;
-
--------------------------------------------------------------------
-DROP PROCEDURE IF EXISTS db_merchant.INSERT_BRAND_PRODUCT;
-CREATE PROCEDURE db_merchant.`INSERT_BRAND_PRODUCT`(
-IN p_brandName varchar(255)
-)
-BEGIN
-				INSERT INTO BRAND_PRODUCT(brand_product_name)
-				VALUES (p_brandName);
-END;
-
--------------------------------------------------------------------
 DROP PROCEDURE IF EXISTS db_merchant.UPDATE_BRAND_PRODUCT;
 CREATE PROCEDURE db_merchant.`UPDATE_BRAND_PRODUCT`(
         IN   p_bId                 int(3),
@@ -63,5 +8,3 @@ BEGIN
     SET b.brand_product_name = p_brandName 
     WHERE b.brand_product_id = p_bId;
 END;
-
--------------------------------------------------------------------

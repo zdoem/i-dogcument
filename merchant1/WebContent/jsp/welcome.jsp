@@ -15,8 +15,24 @@
 </b></P>
 
 <ul>
+   <li><a href="<c:url value="/test.dog"/>">Test Blank Spring</a></li>
+   <br>
   <li><a href="<c:url value="/BrandProductAddForm.dog"/>">ข้อมูลพื้นฐาน  ยี่ห้อสินค้า</a></li>
   <li><a href="<c:url value="/BrandProductList.dog"/>">รายการยี่ห้อสินค้า</a></li>
+  <hr>
+    <li><a href="<c:url value="/TypeProductAddForm.dog"/>">ข้อมูลพื้นฐาน  ประเภทสินค้า</a></li>
+  <li><a href="<c:url value="/TypeProductList.dog"/>">รายการ ประเภทสินค้า</a></li>
+  
+   <hr>
+   <li><a href="<c:url value="/CustomerAddForm.dog"/>">ข้อมูลพื้นฐาน  เพิ่มชื่อลูกค้า</a></li>
+  <li><a href="<c:url value="/CustomerList.dog"/>">รายการ รายการชื่อลูกค้า</a></li>
+   
+   <hr>
+   <li><a href="<c:url value="/UsersAddForm.dog"/>">ข้อมูลพื้นฐาน  เพิ่ม User</a></li>
+  <li><a href="<c:url value="/UsersList.dog"/>">รายการ รายการ User</a></li>
+  
+  
+  <br></br>
   <br></br>
 
   <br></br>

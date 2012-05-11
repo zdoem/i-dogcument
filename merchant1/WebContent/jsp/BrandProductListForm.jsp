@@ -49,7 +49,7 @@ function onADD(){
 <form:form  commandName="Type" method="POST" action="BrandProductList.dog">
 <input type="hidden" name="cmd" value="">
 <table width="800px" border="1" bordercolor="#FFFFFF">
-<tr><td colspan="5" align="left"><h4>รายการข้อมูลพื้นฐาน   ยี่ห้อสินค้า</h4></td>
+<tr><td colspan="5" align="left"><h4>ข้อมูลพื้นฐาน  -> <font color="#f26f21">รายการยี่ห้อสินค้า</font></h4></td>
 </tr>
 <tr bgcolor="#497c09">
 	<th style="color:#FFFFFF;font-weight:bold;text-align:center" width="10%">BRAND_ID</th>

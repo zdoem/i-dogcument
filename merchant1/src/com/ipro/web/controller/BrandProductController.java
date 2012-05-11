@@ -39,7 +39,7 @@ public class BrandProductController  {
 	
 	//doAction Save  Form
 	@RequestMapping(value = "/BrandProductSaveAction", method = RequestMethod.POST)
-	public String doSaveFormAction(@ModelAttribute("BrandProductForm")
+	public String doSaveAction(@ModelAttribute("BrandProductForm")
 	BrandProductForm eForm, BindingResult result) {
 		
 		try{
@@ -66,7 +66,7 @@ public class BrandProductController  {
 	
 
 	@RequestMapping("/BrandProductList")
-	public ModelAndView doBrandListAction(HttpServletRequest request,
+	public ModelAndView doListAction(HttpServletRequest request,
 				HttpServletResponse response)throws Exception {
 			System.out.println("--->List BrandProductList.dog");
 			
@@ -90,7 +90,7 @@ public class BrandProductController  {
 	
 	//doAction  delete 
 	@RequestMapping("/BrandProductDelete")
-	public String doBrandProductDeleteAction(HttpServletRequest request,
+	public String doDeleteAction(HttpServletRequest request,
 			HttpServletResponse response)throws Exception {
 		System.out.println("---> BrandProductDeleteAction.dog");
 		MasterBrandProduct bpService = new MasterBrandProductImpl();
@@ -109,7 +109,7 @@ public class BrandProductController  {
 	
 	//doAction GetData  Form
 	@RequestMapping("/BrandProductRetrieveRec")
-	public ModelAndView doBrandProductRetrieveAction(HttpServletRequest request,
+	public ModelAndView doFectchAction(HttpServletRequest request,
 				HttpServletResponse response)throws Exception {
 			System.out.println("---> BrandProductRetrieveRec.dog");
 			MasterBrandProduct bpService = new MasterBrandProductImpl();
@@ -130,19 +130,13 @@ public class BrandProductController  {
 	
 	//doAction Update Form
 	@RequestMapping(value = "/BrandProductUpdateAction", method = RequestMethod.POST)
-	public String doBrandProductUpateAction(@ModelAttribute("eForm")
+	public String doUpateAction(@ModelAttribute("eForm")
 		BrandProductForm eForm, BindingResult result)  {
 		try{
 		
-			System.out.println("--->Update  BrandProductUpdateAction.dog");	
-	
+			System.out.println("--->Update  BrandProductUpdateAction.dog");		
 			MasterBrandProduct bpService = new MasterBrandProductImpl();
 			BrandProduct bProduct = new BrandProduct();
-			
-/*			System.out.println("Test");
-			if(eForm == null) {
-				System.out.println("--------->>Test");
-			}*/
 			
 			bProduct.setbId(Integer.parseInt(eForm.getbId()));
 			bProduct.setbName(eForm.getbName());

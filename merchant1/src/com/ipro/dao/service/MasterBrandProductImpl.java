@@ -18,7 +18,7 @@ public class MasterBrandProductImpl  extends Common implements MasterBrandProduc
 		/*Common.setConfig(host, port, dns, usr, pwd);*/
 	}
 	
-	@Override
+	//@Override
 	public boolean insertBrandProduct(BrandProduct bProduct) throws Exception {	
 			CallableStatement clbstmt = null;
 			Connection conn = null;
@@ -64,7 +64,7 @@ public class MasterBrandProductImpl  extends Common implements MasterBrandProduc
 	
 	
 
-	@Override
+	//@Override
 	public boolean updateBrandProduct(BrandProduct bProduct) throws Exception {
 		// TODO Auto-generated method stub		
 		CallableStatement clbstmt = null;
@@ -108,7 +108,7 @@ public class MasterBrandProductImpl  extends Common implements MasterBrandProduc
 	}
 
 	
-	@Override
+	//@Override
 	public boolean deleteBrandProduct(int bId) throws Exception {
 		CallableStatement clbstmt = null;
 		Connection conn = null;
@@ -162,7 +162,7 @@ public class MasterBrandProductImpl  extends Common implements MasterBrandProduc
 	}
 
 	
-	@Override
+	//@Override
 	public BrandProduct getBrandProduct(int bId) throws Exception {
 		CallableStatement clbstmt = null;
 		Connection conn = null;
@@ -207,7 +207,7 @@ public class MasterBrandProductImpl  extends Common implements MasterBrandProduc
 		return obj;//#End	
 	}
 
-	@Override
+	//@Override
 	public ArrayList listBrandProduct() throws Exception {
 		// TODO Auto-generated method stub
 		//Log.debug("List WatchdogForm..");
