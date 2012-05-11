@@ -1,0 +1,6 @@
+
+Mysql 5.0 config
+
+varchar 
+charecter set :utf-8
+callation : utf-8_unicode_ci

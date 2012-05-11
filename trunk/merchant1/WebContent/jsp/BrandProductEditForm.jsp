@@ -19,8 +19,8 @@ function onSAVE() {
  </script>
 </head>
 <body>
-  <div id="main">
-<h4>ข้อมูลพื้นฐาน  เเก้ไข ยี่ห้อสินค้า</h4>
+<div id="main">
+<h4>ข้อมูลพื้นฐาน  -> <font color="#f26f21">เเก้ไข ยี่ห้อสินค้า</font></h4>
 
 <form:form method="post" action="">
   <table width="600px">

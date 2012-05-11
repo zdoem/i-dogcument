@@ -12,7 +12,7 @@ import java.sql.*;
 import javax.naming.Context;
 
 /*
- * date:2011-01-19
+ * date:2012-01-19
  * author: pradoem wongkraso
  * contact : go2doem@gmail.com,destar_@hotmail.com
  * description: for connection database basic  with have other class extends 
