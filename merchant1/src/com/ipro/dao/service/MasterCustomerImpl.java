@@ -238,7 +238,7 @@ public class MasterCustomerImpl extends Common implements MasterCustomer{
 				//setTransaction 			
 				 sql=" SELECT cus_id, cus_prefix,cus_fname,cus_lname,cus_tel,cus_mobile" +
 				 " ,cus_email,cus_address,cus_flag,cus_start_date ,cus_comment " +
-				 " FROM db_merchant.customers "+
+				 " FROM db_merchant.customers   "+
 				 " ORDER BY cus_id ASC " ;	
 				 Log.debug("--->SQL:"+sql);	
 				 pstmt = conn.prepareStatement(sql);

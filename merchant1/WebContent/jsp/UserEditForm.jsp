@@ -69,7 +69,7 @@ function onSAVE() {
         <tr>
       <th>&nbsp; Password :
         <br/>
-		<form:password path="password" size="45"/>
+		<form:input path="password" size="45"/>
 		<font color="#FF0000">&nbsp;*</font>
       </th>
     </tr> 

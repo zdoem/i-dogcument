@@ -79,31 +79,39 @@ public class UsersController {
 			}
 			
 			
-		  //*********doAction Update Form
-		@RequestMapping(value = "/UsersUpdateAction", method = RequestMethod.POST)
-		public String doUpateAction(@ModelAttribute("eForm")
-			UsersForm eForm, BindingResult result)  {
-				try{			
-					System.out.println("--->Update  UsersUpdateAction.dog");		
-					MasterUser  uService= new MasterUserImpl();	
+	//*********doAction Update Form
+	@RequestMapping(value = "/UsersUpdateAction", method = RequestMethod.POST)
+	public String doUpateAction(@ModelAttribute("eForm")
+		UsersForm eForm, BindingResult result)  {
+			try{			
+				System.out.println("--->Update  UsersUpdateAction.dog");		
+				MasterUser  uService=  new MasterUserImpl();	
 						
-					UsersBean obj = new UsersBean();
-					//obj.setTypeId(eForm.getTypeId());
-					//obj.setTypeName(eForm.getTypeName());
+				UsersBean obj = new UsersBean();
+				obj.setId(eForm.getUsrId());
+				obj.setfName(eForm.getfName());
+				obj.setlName(eForm.getlName());
+				obj.setTel(eForm.getTel());
+				obj.setMobile(eForm.getMobile());
+				obj.setEmail(eForm.getEmail());
+				obj.setAddress(eForm.getAddress());
+				obj.setLogin(eForm.getUserName());
+				obj.setPassword(eForm.getPassword());
+				obj.setCitizenId(eForm.getCitizenId());
 									
-					boolean isUpd = false;// bpService.updateBrandProduct(obj);		
-					System.out.println("--->Result UpdateRec:"+isUpd);		
-					if(isUpd){
+				boolean isUpd =  uService.updateUsers(obj);
+				System.out.println("--->Result UpdateRec:"+isUpd);		
+				if(isUpd){
 							//TODO :Update Error  
 						return "redirect:error.dog?msg=Update Data is Error&url=home.dog";
-					}else{
+				}else{
 							//TODO: Update success.			
 						return "redirect:success.dog?msg=Successfully&url=UsersList.dog";
-					}			
-				}catch(Exception e){
+				}			
+			}catch(Exception e){
 					return "redirect:error.dog?msg=Update Data is Error&url=home.dog";
-				}
-			}	
+			}
+		}	
 			
 		//*************doAction GetData  Form
 		@RequestMapping("/UsersRetrieve")
@@ -133,26 +141,28 @@ public class UsersController {
 					eForm.setCitizenId(obj.getCitizenId());
 					eForm.setUdate(obj.getDate());
 					
+					System.out.println("----->"+eForm.getPassword());
+					
 					return new ModelAndView("UserEditForm", "command",eForm);
 				}
 		}
 
-		//**********doAction  delete 
-		@RequestMapping("/UsersDelete")
-		public String doDeleteAction(HttpServletRequest request,
-				HttpServletResponse response)throws Exception {
-				System.out.println("---> TypeProductDelete.dog");
-				MasterUser  uService= new MasterUserImpl();						
-				//call Delete Implement	
-				boolean isDel = false;// bpService.deleteBrandProduct(Integer.parseInt(request.getParameter("pId")));   
-				if(isDel){
-					//TODO :Error insert 
-					return "redirect:error.dog?msg=Delete Record is invalid.&url=home.dog";
-				}else{
-					//TODO: insert success.			
-					return "redirect:success.dog?msg=Successfully&url=UsersList.dog";
-				}		
-		}
+	//**********doAction  delete 
+	@RequestMapping("/UsersDelete")
+	public String doDeleteAction(HttpServletRequest request,
+			HttpServletResponse response)throws Exception {
+			System.out.println("---> TypeProductDelete.dog");
+			MasterUser  uService= new MasterUserImpl();						
+			//call Delete Implement	
+			boolean isDel = uService.deleteUsers(request.getParameter("uId"));   
+			if(isDel){
+				//TODO :Error insert 
+				return "redirect:error.dog?msg=Delete Record is invalid.&url=home.dog";
+			}else{
+				//TODO: insert success.			
+				return "redirect:success.dog?msg=Successfully&url=UsersList.dog";
+			}		
+	}
 			
 		//---------ListAction
 		@RequestMapping("/UsersList")

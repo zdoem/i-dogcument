@@ -4,7 +4,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.apache.log4j.Logger;
-
 import com.ipro.web.util.Utilize;
 
 public class GenerateAutoID  extends Common {
