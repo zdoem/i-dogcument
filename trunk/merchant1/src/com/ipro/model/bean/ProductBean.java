@@ -14,9 +14,21 @@ public class ProductBean  implements Serializable {
     private String productDesc;
     private String brandProductId;
     private String typeProductId;
-
-    // private BrandProduct brandProductId;
-   //private TypeProduct typeProductId;
+    private String brandProductName;
+    private String typeProductName;
+   
+	public String getBrandProductName() {
+		return brandProductName;
+	}
+	public void setBrandProductName(String brandProductName) {
+		this.brandProductName = brandProductName;
+	}
+	public String getTypeProductName() {
+		return typeProductName;
+	}
+	public void setTypeProductName(String typeProductName) {
+		this.typeProductName = typeProductName;
+	}
 	public String getProductId() {
 		return productId;
 	}

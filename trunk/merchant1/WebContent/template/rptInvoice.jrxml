@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="196"/>
+	<style name="tahoma"/>
+	<parameter name="invoiceId" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     o.o_invoice AS ioder_o_invoice,
+     o.o_date AS ioder_o_date,
+     o.total_price AS ioder_total_price,
+     o.total_unit AS ioder_total_unit,
+     o.icus_id AS ioder_icus_id,
+     o.iusr_id AS ioder_iusr_id,
+     i.o_invoice AS ioder_items_o_invoice,
+     i.price_sale AS ioder_items_price_sale,
+     i.unit AS ioder_items_unit,
+     i.product_id AS ioder_items_product_id,
+     p.product_name,
+     (i.unit * i.price_sale) as total
+FROM
+     ioder o,
+     ioder_items i,
+     product p
+
+WHERE
+       p.product_id = i.product_id and
+      o.o_invoice = i.o_invoice   and
+      i.o_invoice  = $P{invoiceId}]]>
+	</queryString>
+	<field name="ioder_o_invoice" class="java.lang.String"/>
+	<field name="ioder_o_date" class="java.sql.Date"/>
+	<field name="ioder_total_price" class="java.lang.Float"/>
+	<field name="ioder_total_unit" class="java.lang.Integer"/>
+	<field name="ioder_icus_id" class="java.lang.String"/>
+	<field name="ioder_iusr_id" class="java.lang.String"/>
+	<field name="ioder_items_o_invoice" class="java.lang.String"/>
+	<field name="ioder_items_price_sale" class="java.lang.Float"/>
+	<field name="ioder_items_unit" class="java.lang.Integer"/>
+	<field name="ioder_items_product_id" class="java.lang.String"/>
+	<field name="product_name" class="java.lang.String"/>
+	<field name="total" class="java.lang.Double"/>
+	<variable name="z_mount" class="java.lang.Float" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{ioder_items_price_sale}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="59" splitType="Stretch">
+			<staticText>
+				<reportElement x="193" y="19" width="165" height="40"/>
+				<textElement textAlignment="Center">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[ใบเสร็จ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="125" splitType="Stretch">
+			<staticText>
+				<reportElement x="13" y="65" width="192" height="34"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Phone [+66841013129] Fax [-]]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="36" width="192" height="26"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[[1109 ซ.บ้านสมเด็จเจ้าพระยา ถ.อิสรภาพ แขวงหิรัญรูจี เขต ธนบุรี  กทม 10600]]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="7" width="100" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[[Company Name]]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="396" y="61" width="140" height="14"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[DATE:  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="396" y="36" width="159" height="19"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[INVOICE No :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="396" y="7" width="128" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[INVOICE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="457" y="39" width="90" height="14"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ioder_o_invoice}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="459" y="83" width="76" height="16"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="396" y="85" width="140" height="14"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[PRINT DATE:  ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="438" y="62" width="98" height="14"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ioder_o_date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<rectangle>
+				<reportElement x="13" y="0" width="100" height="20" forecolor="#000000" backcolor="#F0F0F0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="113" y="0" width="172" height="20" backcolor="#F0F0F0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="285" y="0" width="73" height="20" backcolor="#F0F0F0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="358" y="0" width="76" height="20" backcolor="#F0F0F0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="435" y="0" width="98" height="20" backcolor="#F0F0F0"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="23" y="3" width="77" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[รหัสสินค้า]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="155" y="3" width="62" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[ชื่อสินค้า]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="285" y="3" width="69" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[จำนวนสินค้า]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="374" y="3" width="52" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[ราคาขาย]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="457" y="2" width="67" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[รวมเป็นเงิน]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<rectangle>
+				<reportElement x="13" y="1" width="100" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="113" y="1" width="172" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="285" y="1" width="73" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="358" y="1" width="76" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="435" y="1" width="98" height="20"/>
+			</rectangle>
+			<textField>
+				<reportElement x="292" y="3" width="55" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ioder_items_unit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="358" y="3" width="71" height="18"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ioder_items_price_sale}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="115" y="0" width="170" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{product_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="441" y="1" width="89" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="19" y="1" width="90" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ioder_items_product_id}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="415" y="10" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="495" y="10" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="185" y="1" width="100" height="20" backcolor="#FFCCCC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[รวม]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="285" y="0" width="73" height="20" backcolor="#FFCCCC"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="358" y="0" width="76" height="20" backcolor="#FFCCCC"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="435" y="0" width="98" height="20" backcolor="#FFCCCC"/>
+			</rectangle>
+			<textField>
+				<reportElement x="292" y="1" width="62" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ioder_total_unit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="457" y="1" width="73" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ioder_total_price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="374" y="0" width="55" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{z_mount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

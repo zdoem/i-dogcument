@@ -31,6 +31,14 @@
    <li><a href="<c:url value="/UsersAddForm.dog"/>">ข้อมูลพื้นฐาน  เพิ่ม User</a></li>
   <li><a href="<c:url value="/UsersList.dog"/>">รายการ รายการ User</a></li>
   
+   <hr>
+   <li><a href="<c:url value="/SupplierAddForm.dog"/>">ข้อมูลพื้นฐาน  เพิ่ม  Supplier</a></li>
+   <li><a href="<c:url value="/SupplierList.dog"/>">รายการ รายการ Supplier</a></li>
+  
+  <hr>
+   <li><a href="<c:url value="/ProductAddForm.dog"/>">ข้อมูลพื้นฐาน  เพิ่ม  รายการสินค้า</a></li>
+  <li><a href="<c:url value="/ProductList.dog"/>">รายการ รายการ สิ้นค้า</a></li>
+  
   
   <br></br>
   <br></br>

@@ -3,62 +3,64 @@ package com.ipro.model.bean;
 import java.io.Serializable;
 
 public class SupplierBean  implements Serializable {
-    private Integer suppId;
-    private String suppCompanyName;
-    private String suppContactName;
-    private String suppEmail;
-    private String suppTel;
-    private String suppMobile;
-    private String suppAddress;
-    private String suppDesc;
+    private Integer id;
+    private String companyName;
+    private String contactName;
+    private String email;
+    private String tel;
+    private String mobile;
+    private String address;
+    private String desc;
     
-	public Integer getSuppId() {
-		return suppId;
+	public Integer getId() {
+		return id;
 	}
-	public void setSuppId(Integer suppId) {
-		this.suppId = suppId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
-	public String getSuppCompanyName() {
-		return suppCompanyName;
+	public String getCompanyName() {
+		return companyName;
 	}
-	public void setSuppCompanyName(String suppCompanyName) {
-		this.suppCompanyName = suppCompanyName;
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
 	}
-	public String getSuppContactName() {
-		return suppContactName;
+	public String getContactName() {
+		return contactName;
 	}
-	public void setSuppContactName(String suppContactName) {
-		this.suppContactName = suppContactName;
+	public void setContactName(String contactName) {
+		this.contactName = contactName;
 	}
-	public String getSuppEmail() {
-		return suppEmail;
+	public String getEmail() {
+		return email;
 	}
-	public void setSuppEmail(String suppEmail) {
-		this.suppEmail = suppEmail;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	public String getSuppTel() {
-		return suppTel;
+	public String getTel() {
+		return tel;
 	}
-	public void setSuppTel(String suppTel) {
-		this.suppTel = suppTel;
+	public void setTel(String tel) {
+		this.tel = tel;
 	}
-	public String getSuppMobile() {
-		return suppMobile;
+	public String getMobile() {
+		return mobile;
 	}
-	public void setSuppMobile(String suppMobile) {
-		this.suppMobile = suppMobile;
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
 	}
-	public String getSuppAddress() {
-		return suppAddress;
+	public String getAddress() {
+		return address;
 	}
-	public void setSuppAddress(String suppAddress) {
-		this.suppAddress = suppAddress;
+	public void setAddress(String address) {
+		this.address = address;
 	}
-	public String getSuppDesc() {
-		return suppDesc;
+	public String getDesc() {
+		return desc;
 	}
-	public void setSuppDesc(String suppDesc) {
-		this.suppDesc = suppDesc;
+	public void setDesc(String desc) {
+		this.desc = desc;
 	}
+    
+	
 
 }

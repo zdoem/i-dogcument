@@ -7,14 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import org.apache.log4j.Logger;
-
-import com.ipro.model.bean.CustomerBean;
 import com.ipro.model.bean.UsersBean;
 
 public class MasterUserImpl extends Common implements MasterUser {
 
-	private static org.apache.log4j.Logger Log = Logger
-			.getLogger(MasterUserImpl.class);
+	private static org.apache.log4j.Logger Log = Logger.getLogger(MasterUserImpl.class);
 	static String INSTANT_DB_NAME = "db_merchant";
 	static {
 		String dataSource = "jdbc/Datasource_merchant";
@@ -74,13 +71,97 @@ public class MasterUserImpl extends Common implements MasterUser {
 	}
 
 	public boolean updateUsers(UsersBean user) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+		// TODO Auto-generated method stub		
+		CallableStatement clbstmt = null;
+		Connection conn = null;
+		int i = 1;
+		boolean isUpd = true; //true is fail
+		try{	
+				conn = open();
+				Common.beginTransaction(conn);
+				Log.debug("-->Before Update.");	
+				//Update to DB
+				clbstmt = conn.prepareCall("{call "+INSTANT_DB_NAME+".UPDATE_USER2(?,?,?,?,?,?,?,?,?,?,?)}");
+				clbstmt.setString(i++,user.getId());
+				clbstmt.setString(i++,user.getfName());	
+				clbstmt.setString(i++,user.getlName());	
+				clbstmt.setString(i++,user.getTel());	
+				clbstmt.setString(i++,user.getMobile());	
+				clbstmt.setString(i++,user.getEmail());	
+				clbstmt.setString(i++,user.getAddress());	
+				clbstmt.setString(i++,user.getLogin());	
+				clbstmt.setString(i++,user.getPassword());	
+				clbstmt.setString(i++,"P");	
+				clbstmt.setString(i++,user.getCitizenId());	
+				System.out.println(" Mapping parameter successfully.");
+				isUpd = clbstmt.execute();
+				
+				System.out.println(" is Result :"+isUpd);
+				Log.debug("-->Update successfully.");
+				//result = clbstmt.executeUpdate();		    
+				Common.commitTransaction(conn);
+				Log.debug("-->commit update successfully.");
+			}catch(Exception e){
+				e.fillInStackTrace();
+				Log.debug("Update Exception e:"+e.toString());
+				try{
+					conn.rollback();
+				}catch(Exception ex){}
+			}finally{				
+				try {
+					if(clbstmt!=null)
+						clbstmt.close();
+					if(conn!=null)
+						conn.close();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}					
+			}
+		return isUpd;//#End					
 	}
 
 	public boolean deleteUsers(String usrId) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+		CallableStatement clbstmt = null;
+		Connection conn = null;
+		int i = 1;
+		//int intRet = 0;
+		//***********
+		boolean isDel = true;  //true is success,false is error
+		try{
+				//connection db
+				conn = open();
+				Common.beginTransaction(conn);
+				Log.debug("-->Delete record.");	
+				
+				clbstmt = conn.prepareCall("{call "+INSTANT_DB_NAME+".DELETE_FAKE_USER2(?)}");
+				clbstmt.setString(i++,usrId);				    
+				isDel = clbstmt.execute();				
+					
+				System.out.println("--->Execute delete() :"+isDel);     			        
+				Common.commitTransaction(conn);				
+				Log.debug("--->Execute delete."); 
+				//intRet 0=Fail
+				//intRet 1=success
+				return false;
+			}catch(Exception e){
+				//intRet = 0;
+				e.fillInStackTrace();
+				try{
+					conn.rollback();
+				}catch(Exception ex){}
+				return true;
+			}
+			finally{
+				try {
+					if(clbstmt!=null)
+						clbstmt.close();
+					if(conn!=null)
+						conn.close();
+				 } catch (SQLException e) {
+					  e.printStackTrace();
+				}
+			}	
 	}
 
 	public UsersBean getUsers(String usrId) throws Exception {
@@ -164,7 +245,9 @@ public class MasterUserImpl extends Common implements MasterUser {
 			// setTransaction
 
 			sql = " SELECT usr_id,usr_prefix,usr_fname,usr_lname,usr_tel,usr_mobile,usr_email,usr_address,usr_login,usr_password" +
-					",usr_activate,usr_citizen_id,usr_date  FROM db_merchant.user2  ORDER BY usr_id ASC ";
+					",usr_activate,usr_citizen_id,usr_date  FROM db_merchant.user2 " +
+					" WHERE usr_activate <> 'D' " +
+					" ORDER BY usr_id ASC ";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 
